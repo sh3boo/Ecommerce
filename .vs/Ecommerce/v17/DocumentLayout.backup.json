@@ -1,0 +1,297 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CA80C458-2A68-402D-9724-89D31053F362}|Services\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.infrastructure\\repositories\\productreposetory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA80C458-2A68-402D-9724-89D31053F362}|Services\\Catalog\\Catalog.Infrastructure\\Catalog.Infrastructure.csproj|solutionrelative:services\\catalog\\catalog.infrastructure\\repositories\\productreposetory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A35666D-E727-48C3-B71F-22589FA46C8C}|Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.core\\repositories\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A35666D-E727-48C3-B71F-22589FA46C8C}|Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj|solutionrelative:services\\catalog\\catalog.core\\repositories\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A35666D-E727-48C3-B71F-22589FA46C8C}|Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.core\\specs\\catalogspecparam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A35666D-E727-48C3-B71F-22589FA46C8C}|Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj|solutionrelative:services\\catalog\\catalog.core\\specs\\catalogspecparam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD01438D-E4F7-419F-82C8-15B27BCA815B}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.api\\controllers\\catalogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD01438D-E4F7-419F-82C8-15B27BCA815B}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\controllers\\catalogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.application\\handlers\\queries\\getallproductsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|solutionrelative:services\\catalog\\catalog.application\\handlers\\queries\\getallproductsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.application\\mappers\\productmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|solutionrelative:services\\catalog\\catalog.application\\mappers\\productmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.application\\queries\\getallproductsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|solutionrelative:services\\catalog\\catalog.application\\queries\\getallproductsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.application\\queries\\getallbrandsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|solutionrelative:services\\catalog\\catalog.application\\queries\\getallbrandsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.application\\responses\\productresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|solutionrelative:services\\catalog\\catalog.application\\responses\\productresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A35666D-E727-48C3-B71F-22589FA46C8C}|Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.core\\specs\\pagination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8A35666D-E727-48C3-B71F-22589FA46C8C}|Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj|solutionrelative:services\\catalog\\catalog.core\\specs\\pagination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8A35666D-E727-48C3-B71F-22589FA46C8C}|Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.core\\catalog.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8A35666D-E727-48C3-B71F-22589FA46C8C}|Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj|solutionrelative:services\\catalog\\catalog.core\\catalog.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.application\\handlers\\queries\\getalltypesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75670940-5F1A-49A8-8AE8-9E4593A0ECDF}|Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj|solutionrelative:services\\catalog\\catalog.application\\handlers\\queries\\getalltypesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD01438D-E4F7-419F-82C8-15B27BCA815B}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FD01438D-E4F7-419F-82C8-15B27BCA815B}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FD01438D-E4F7-419F-82C8-15B27BCA815B}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|d:\\my downlowads\\nq\\codes\\first project ecommerce\\ecommerce\\services\\catalog\\catalog.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD01438D-E4F7-419F-82C8-15B27BCA815B}|Services\\Catalog\\Catalog.API\\Catalog.API.csproj|solutionrelative:services\\catalog\\catalog.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 752,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Microsoft.VisualStudio.Docker.Compose.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets",
+              "ViewState": "AgIAAK0BAAAAAAAAAAAhwLcBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-05-13T17:43:40.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductMappingProfile.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Mappers\\ProductMappingProfile.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Application\\Mappers\\ProductMappingProfile.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Mappers\\ProductMappingProfile.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Application\\Mappers\\ProductMappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T17:17:29.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GetAllProductsQuery.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Queries\\GetAllProductsQuery.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Application\\Queries\\GetAllProductsQuery.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Queries\\GetAllProductsQuery.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Application\\Queries\\GetAllProductsQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T17:13:32.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GetAllBrandsQuery.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Queries\\GetAllBrandsQuery.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Application\\Queries\\GetAllBrandsQuery.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Queries\\GetAllBrandsQuery.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Application\\Queries\\GetAllBrandsQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T17:12:25.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetAllProductsQueryHandler.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Handlers\\Queries\\GetAllProductsQueryHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Application\\Handlers\\Queries\\GetAllProductsQueryHandler.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Handlers\\Queries\\GetAllProductsQueryHandler.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Application\\Handlers\\Queries\\GetAllProductsQueryHandler.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAAB4AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T17:12:18.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductReposetory.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Infrastructure\\Repositories\\ProductReposetory.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Infrastructure\\Repositories\\ProductReposetory.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Infrastructure\\Repositories\\ProductReposetory.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Infrastructure\\Repositories\\ProductReposetory.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T18:54:32.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProductResponseDto.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Responses\\ProductResponseDto.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Application\\Responses\\ProductResponseDto.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Responses\\ProductResponseDto.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Application\\Responses\\ProductResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T18:54:06.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IProductRepository.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Core\\Repositories\\IProductRepository.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Core\\Repositories\\IProductRepository.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Core\\Repositories\\IProductRepository.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Core\\Repositories\\IProductRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T18:50:57.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Pagination.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Core\\Specs\\Pagination.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Core\\Specs\\Pagination.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Core\\Specs\\Pagination.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Core\\Specs\\Pagination.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBMAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T18:45:14.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CatalogSpecParam.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Core\\Specs\\CatalogSpecParam.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Core\\Specs\\CatalogSpecParam.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Core\\Specs\\CatalogSpecParam.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Core\\Specs\\CatalogSpecParam.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAowBMAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T13:06:11.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Catalog.Core.csproj",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-02T13:04:27.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GetAllTypesQueryHandler.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Handlers\\Queries\\GetAllTypesQueryHandler.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.Application\\Handlers\\Queries\\GetAllTypesQueryHandler.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.Application\\Handlers\\Queries\\GetAllTypesQueryHandler.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.Application\\Handlers\\Queries\\GetAllTypesQueryHandler.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T12:53:16.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CatalogController.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.API\\Controllers\\CatalogController.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Controllers\\CatalogController.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.API\\Controllers\\CatalogController.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Controllers\\CatalogController.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAYwDQAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T09:12:18.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-27T18:39:12.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.API\\Program.cs",
+              "RelativeDocumentMoniker": "Services\\Catalog\\Catalog.API\\Program.cs",
+              "ToolTip": "D:\\my downlowads\\NQ\\Codes\\First Project Ecommerce\\Ecommerce\\Services\\Catalog\\Catalog.API\\Program.cs",
+              "RelativeToolTip": "Services\\Catalog\\Catalog.API\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAMwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-27T18:35:49.044Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 752,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
