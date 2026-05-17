@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Catalog.Core.Repositories
 {
-    public interface IProductRepository
+    public interface IProductRepository  
     {
         Task<Pagination<Product>> GetAllProductsAsync(CatalogSpecParam catalogSpecParam);
         Task<IEnumerable<Product>> GetAllProductsByName(string Name);
