@@ -31,14 +31,31 @@ namespace Basket.Infrastructure.Repositories
 
         }
 
-        public Task<ShoppingCart> UpdateBasket(ShoppingCart basket)
+        public async Task<ShoppingCart> UpdateBasket(ShoppingCart cart)
         {
-            throw new NotImplementedException();
+            var basket = await _redisCache.GetStringAsync(cart.UserName);
+            if (string.IsNullOrEmpty(basket))
+            {
+                return await GetBasket(cart.UserName);
+            }
+            else
+            {
+                await _redisCache.SetStringAsync(cart.UserName, JsonConvert.SerializeObject(cart));
+                return await GetBasket(cart.UserName);
+            }
         }
 
         public Task DeleteBasket(string userName)
         {
-            throw new NotImplementedException();
-        }
+            var basket = _redisCache.GetStringAsync(userName);
+            if (string.IsNullOrEmpty(basket.Result))
+            {
+                return Task.CompletedTask;
+            }
+            else
+            {
+                return _redisCache.RemoveAsync(userName);
+
+            }
     }
 }
