@@ -27,7 +27,7 @@ namespace Basket.Infrastructure.Repositories
                 return null;
 
             }
-            return JsonConvert.DeserializeObject <ShoppingCart>(basket);
+            return JsonConvert.DeserializeObject<ShoppingCart>(basket);
 
         }
 
@@ -57,5 +57,6 @@ namespace Basket.Infrastructure.Repositories
                 return _redisCache.RemoveAsync(userName);
 
             }
+        }
     }
 }
