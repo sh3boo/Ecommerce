@@ -23,6 +23,26 @@ services:
      - "27017:27017"
      volumes:
      - catalogdata:/data/db
+  basketdb:
+     image: redis:Alpine
+     container_name: basketdb
+     ports:
+     - "6379:6379"
+     volumes:
+     - basketdata:/data/db
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: Services/Basket/Basket.API/Dockerfile
+    ports:
+     - "8001:8001"
+    depends_on:
+    - "basketdb"
+    environment:
+    - ASPNETCORE_URLS=http://+:8001
+    - CasheSettings__ConnectionString=basketdb:6379"
+
 volumes:
   catalogdata:  
     
