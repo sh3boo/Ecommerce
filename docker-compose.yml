@@ -41,7 +41,7 @@ services:
     - "basketdb"
     environment:
     - ASPNETCORE_URLS=http://+:8001
-    - CasheSettings__ConnectionString=basketdb:6379
+    - CacheSettings__ConnectionString=basketdb:6379
 
 volumes:
   catalogdata:
