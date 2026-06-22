@@ -26,14 +26,30 @@ namespace Basket.API.Controllers
             return Ok(basket);
         }
         [HttpPost("CreateBasket")]
-        [ProducesResponseType(typeof(ShoppingCartResponse), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<ShoppingCartResponse>> UpdateBasket([FromBody] CreateShoppingCartCommand command)
+        [ProducesResponseType(typeof(ShoppingCartResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<ShoppingCartResponse>> CreateBasket(
+    [FromBody] CreateShoppingCartCommand command)
         {
+            if (command == null)
+                return BadRequest("The basket request is null.");
+
+            if (string.IsNullOrWhiteSpace(command.UserName))
+                return BadRequest("UserName is required.");
+
             var basket = await _mediator.Send(command);
+
+            if (basket == null)
+            {
+                return Problem(
+                    title: "Basket creation failed",
+                    detail: "The MediatR handler returned null. Check the command handler, AutoMapper configuration, Redis connection, and repository save method.",
+                    statusCode: StatusCodes.Status500InternalServerError);
+            }
+
             return Ok(basket);
-
         }
-
         [HttpDelete]
         [Route("[action]/{userName}", Name = "DeleteBasketByUserName")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
