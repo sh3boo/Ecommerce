@@ -42,8 +42,18 @@ services:
     environment:
     - ASPNETCORE_URLS=http://+:8001
     - CacheSettings__ConnectionString=basketdb:6379
+  portainer:
+   image: portainer/portainer-ce
+   container_name: portainer
+   restart: always
+   ports:
+   - "8080:8000"
+   - "9000:9000"
+   volumes:
+   - portainer_data:/data
+
 
 volumes:
   catalogdata:
   basketdata:
-    
+  portainer_data:
