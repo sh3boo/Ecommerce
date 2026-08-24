@@ -37,19 +37,63 @@ namespace Discount.Infrastructure.Repositories
             // Additional implementation can be added here
         }
 
-        public Task<bool> CreateDiscount(Coupon coupon)
+        public async Task<bool> CreateDiscount(Coupon coupon)
         {
-            throw new NotImplementedException();
+            // Ensure NpgsqlConnection is properly referenced
+            await using var connection = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:Connection"));
+            var affected = connection.ExecuteAsync
+                ("Insert into coupon (ProductName , Description , Amount) Values (@ProductName , @Desctiption , @Amount",
+                new
+                {
+                    Amount = coupon.Amount,
+                    Description = coupon.Description,
+                    ProductName = coupon.ProductName
+                });
+            if (affected == null)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public Task<bool> DeleteDiscount(string productName)
+        public async Task<bool> DeleteDiscount(string productName)
         {
-            throw new NotImplementedException();
+            // Ensure NpgsqlConnection is properly referenced
+            await using var connection = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:Connection"));
+            var affected = connection.ExecuteAsync
+                (" delete from coupon where ProductName = @ProductName ",
+                new
+                {
+                    
+                    ProductName = productName
+
+                });
+            if (affected == null)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public Task<bool> UpdateDiscount(Coupon coupon)
+        public async Task<bool> UpdateDiscount(Coupon coupon)
         {
-            throw new NotImplementedException();
-        }
+            // Ensure NpgsqlConnection is properly referenced
+            await using var connection = new NpgsqlConnection(_configuration.GetValue<string>("DatabaseSettings:Connection"));
+            var affected = connection.ExecuteAsync
+                (" update coupon set ProductName = @ProductName , Descreption=@Descreption,Amount=@Amoun where Id =@Id",
+                new
+                {
+                    Amount = coupon.Amount,
+                    Description = coupon.Description,
+                    ProductName = coupon.ProductName,
+                    Id=coupon.Id
+                });
+            if (affected == null)
+            {
+                return false;
+            }
+            return true;
+
+         }
     }
 }
