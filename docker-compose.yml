@@ -90,8 +90,7 @@ services:
       dockerfile: Services/Discount/Discount.API/Dockerfile
     environment:
      - ASPNETCORE_ENVIRONMENT=Development
-     - "DatabaseSettings__ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id =admin;Password=Password@1"
-    container_name: discount.api
+     - "DatabaseSettings__Connection=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=Password@1"
     depends_on:
       discountdb:
         condition: service_healthy 

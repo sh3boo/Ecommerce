@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -20,7 +20,7 @@ namespace Discount.Infrastructure.Extensions
             {
                 var Services = scope.ServiceProvider;
                 var config = Services.GetRequiredService<IConfiguration>();
-                var logger = Services.GetRequiredService<Logger<TContext>>();
+                var logger = Services.GetRequiredService<ILogger<TContext>>();
                 try
                 {
                     logger.LogInformation("Discount DB Migration Started");
@@ -30,7 +30,7 @@ namespace Discount.Infrastructure.Extensions
                 }
                 catch (Exception ex)
                 {
-                    logger.LogError("Can't create db migration");
+                    logger.LogError(ex, "Can't create db migration");
                 }
             }
             return host;
@@ -48,32 +48,30 @@ namespace Discount.Infrastructure.Extensions
                     {
                         Connection = connection
                     };
-                    cmd.CommandText = "Drop Table IF EXISTs Coupon";
+                    cmd.CommandText = "Drop Table IF EXISTS Coupon";
                     cmd.ExecuteNonQuery();
                     cmd.CommandText = (@"Create Table Coupon (Id Serial Primary key,
-                                        ProductName Nvarchar(500)Not Null,
+                                        ProductName VARCHAR(500) Not Null,
                                         Description Text,
                                         Amount INT)");
                     cmd.ExecuteNonQuery();
-                    cmd.CommandText = @"Insert Into Coupon (ProductName , Desctiption , Amount)
+                    cmd.CommandText = @"Insert Into Coupon (ProductName , Description , Amount)
                                                             Values ('Egypt Adidas Quick Force Indoor Badminton Shoes','Addidas Discount',600);";
                     cmd.ExecuteNonQuery();
-                    cmd.CommandText = @"Insert Into Coupon (ProductName , Desctiption , Amount)
+                    cmd.CommandText = @"Insert Into Coupon (ProductName , Description , Amount)
                                                             Values ('PowerFit 19 FH Rubber Spike Cricket Shoes','PowerFit Discount',600);";
                     cmd.ExecuteNonQuery();
-
+                    break;
 
                 }
                 catch (Exception ex)
                 {
                     retry--;
-                    if (retry ==0)
+                    if (retry == 0)
                     {
                         throw;
                     }
                     Thread.Sleep(2000);
-
-
                 }
             }
         }

@@ -4,6 +4,7 @@ using Discount.Application.Commands;
 using Discount.Application.Mapper;
 using Discount.Core.Repositories;
 using Discount.Infrastructure.Extensions;
+using Discount.Infrastructure.Repositories;
 
 namespace Discount.API
 {
@@ -27,7 +28,7 @@ namespace Discount.API
                 cfg.RegisterServicesFromAssembly(typeof(CreateDiscountCommand).Assembly);
             });
 
-            builder.Services.AddScoped<IDiscountRepository, IDiscountRepository>();
+            builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
             builder.Services.AddGrpc();
 
             var app = builder.Build();
