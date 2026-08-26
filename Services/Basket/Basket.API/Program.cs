@@ -1,7 +1,9 @@
+using Basket.Application.GrpcServices;
 using Basket.Application.Handlers.Commands;
 using Basket.Application.Mappers;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
+using Discount.Grpc.Protos;
 using Microsoft.OpenApi.Models;
 
 namespace Basket.API
@@ -24,6 +26,10 @@ namespace Basket.API
             });
 
             builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+            builder.Services.AddScoped<DiscountGrpcService>();
+            builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
+                cfg=>cfg.Address=new Uri(builder.Configuration["GrpcSettings:DiscountUrl"])
+                );
 
             builder.Services.AddApiVersioning(options =>
             {
