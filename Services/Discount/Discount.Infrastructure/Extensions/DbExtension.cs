@@ -48,25 +48,30 @@ namespace Discount.Infrastructure.Extensions
                     {
                         Connection = connection
                     };
-                    cmd.CommandText = "Drop Table IF EXISTS Coupon";
-                    cmd.ExecuteNonQuery();
-                    cmd.CommandText = (@"Create Table Coupon (Id Serial Primary key,
+                    cmd.CommandText = (@"Create Table IF NOT EXISTS Coupon (Id Serial Primary key,
                                         ProductName VARCHAR(500) Not Null,
                                         Description Text,
                                         Amount INT)");
                     cmd.ExecuteNonQuery();
-                    cmd.CommandText = @"Insert Into Coupon (ProductName , Description , Amount)
-                                                            Values ('Egypt Adidas Quick Force Indoor Badminton Shoes','Addidas Discount',600);";
+                    cmd.CommandText = @"INSERT INTO Coupon (ProductName, Description, Amount)
+                                        SELECT 'Egypt Adidas Quick Force Indoor Badminton Shoes', 'Addidas Discount', 600
+                                        WHERE NOT EXISTS (
+                                            SELECT 1 FROM Coupon
+                                            WHERE ProductName = 'Egypt Adidas Quick Force Indoor Badminton Shoes'
+                                        );";
                     cmd.ExecuteNonQuery();
-                    cmd.CommandText = @"Insert Into Coupon (ProductName , Description , Amount)
-                                                            Values ('PowerFit 19 FH Rubber Spike Cricket Shoes','PowerFit Discount',600);";
+                    cmd.CommandText = @"INSERT INTO Coupon (ProductName, Description, Amount)
+                                        SELECT 'PowerFit 19 FH Rubber Spike Cricket Shoes', 'PowerFit Discount', 600
+                                        WHERE NOT EXISTS (
+                                            SELECT 1 FROM Coupon
+                                            WHERE ProductName = 'PowerFit 19 FH Rubber Spike Cricket Shoes'
+                                        );";
                     cmd.ExecuteNonQuery();
                     break;
 
                 }
                 catch (Exception ex)
                 {
-                    retry--;
                     if (retry == 0)
                     {
                         throw;

@@ -27,9 +27,10 @@ namespace Basket.Application.Handlers.Commands
             foreach (var item in request.Items)
             {
                 var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
-                if (coupon != null)
-                { 
-                item.Price-=coupon.Amount;
+
+                if (coupon.Amount > 0)
+                {
+                    item.Price = Math.Max(0, item.Price - coupon.Amount);
                 }
             }
             var shoppingCart = await _basketRepository.UpdateBasket(new Core.Entites.ShoppingCart
