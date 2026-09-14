@@ -29,7 +29,22 @@ namespace Ordering.Infrastructure.Data
                     UserName = "Sh3boo",
                     FirstName = "Sh3boo",
                     LastName = "Sh3boo",
-                    EmailAddress = "sh3boo@example.com"
+                    EmailAddress = "sh3boo@example.com",
+                    AddressLine = "123 Main St",
+                    Country = "USA",
+                    State = "CA",
+                    ZipCode = "12345",
+                    Phone = "123-456-7890",
+                    CardName = "Visa",
+                    CardNumber = "4111111111111111",
+                        Expiration = "12/25",
+                        cvv = "123",
+                        PaymentMethod = 1,
+                        TotaPrice = 100.00m,
+                        LastModifiedBy = "Sh3boo",
+                        LastModifiedDate = DateTime.UtcNow
+
+
                 }
 
             };
