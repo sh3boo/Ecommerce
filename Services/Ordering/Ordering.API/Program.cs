@@ -1,4 +1,7 @@
 
+using Ordering.Application.Extensions;
+using Ordering.Infrastructure.Extensions;
+
 namespace Ordering.API
 {
     public class Program
@@ -9,6 +12,37 @@ namespace Ordering.API
 
             // Add services to the container.
 
+            builder.Services.AddApiVersioning(options =>
+            {
+                options.ReportApiVersions = true;
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
+            });
+
+
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.OpenApiInfo
+                {
+                    Title = "Catalog.API",
+                    Version = "v1",
+                    Description = "Catalog Microservice API",
+                    Contact = new Microsoft.OpenApi.OpenApiContact
+                    {
+                        Name = "Ahemd Shaban",
+                        Email = "ahmedshanan2021@gmail.com"
+                    }
+                }
+                    );
+            });
+
+            builder.Services.AddApplicationServices();
+            builder.Services.AddInfraService(builder.Configuration);
+
+
+
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
@@ -18,7 +52,10 @@ namespace Ordering.API
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
+
             }
 
             app.UseAuthorization();
