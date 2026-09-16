@@ -1,5 +1,7 @@
 
+using Ordering.API.Extensions;
 using Ordering.Application.Extensions;
+using Ordering.Infrastructure.Data;
 using Ordering.Infrastructure.Extensions;
 
 namespace Ordering.API
@@ -48,6 +50,11 @@ namespace Ordering.API
             builder.Services.AddOpenApi();
 
             var app = builder.Build();
+            app.MigrateDatabase<OrderContext>((context, services) =>
+            {
+                var logger = services.GetService<ILogger<OrderContextSeed>>();
+                OrderContextSeed.SeedAsync(context, logger).Wait();
+            });
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
