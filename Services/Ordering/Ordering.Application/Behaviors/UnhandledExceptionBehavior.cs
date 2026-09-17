@@ -29,5 +29,6 @@ namespace Ordering.Application.Behaviors
                 _logger.LogError(ex, "Application Request: Unhandled Exception for Request {Name} {@Request}", requestName, request);
                 throw;
             }
+        }
     }
 }

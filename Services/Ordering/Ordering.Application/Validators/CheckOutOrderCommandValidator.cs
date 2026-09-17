@@ -32,4 +32,5 @@ namespace Ordering.Application.Validators
                 .MaximumLength(50).WithMessage("{LastName} must not exceed 50 characters.");
 
         }
+    }
 }
