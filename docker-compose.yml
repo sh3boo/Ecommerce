@@ -127,7 +127,7 @@ services:
     depends_on:
       - orderdb
     ports:
-      - "8003/8080"
+      - "8003:8080"
 
 volumes:
   catalogdata:
