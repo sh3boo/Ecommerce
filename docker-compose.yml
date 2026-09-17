@@ -123,7 +123,7 @@ services:
     environment:
      - ASPNETCORE_ENVIRONMENT=Development
      - ASPNETCORE_URLS=http://+:8080
-     - "ConnectionStrings__OrderingConnectionString=Server=localhost;Database=OrderingDb;User Id=sa;Password=Password123;TrustServerCertificate=True;"
+     - "ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=OrderingDb;User Id=sa;Password=Password123;TrustServerCertificate=True;"
     depends_on:
       - orderdb
     ports:
