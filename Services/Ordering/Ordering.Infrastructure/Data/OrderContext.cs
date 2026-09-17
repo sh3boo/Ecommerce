@@ -31,7 +31,7 @@ namespace Ordering.Infrastructure.Data
                         break;
                 }
             }
-            return base.SaveChangesAsync(cancellationToken);
+            return base.SaveChangesAsync(acceptAllChangesSuccess, cancellationToken);
         }
 
     }
