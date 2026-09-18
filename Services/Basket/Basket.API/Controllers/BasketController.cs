@@ -1,7 +1,11 @@
-﻿using Basket.Application.Commands;
+﻿using AutoMapper;
+using Basket.Application.Commands;
 using Basket.Application.Handlers.Commands;
 using Basket.Application.Queries;
 using Basket.Application.Responses;
+using Basket.Core.Entites;
+using EventBus.Messages.Events;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +16,13 @@ namespace Basket.API.Controllers
     public class BasketController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public BasketController(IMediator mediator)
+        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IMapper _mapper;
+        public BasketController(IMediator mediator, IPublishEndpoint publishEndpoint, IMapper mapper)
         {
             _mediator = mediator;
+            _publishEndpoint = publishEndpoint;
+            _mapper = mapper;
         }
         [HttpGet]
         [Route("[action]/{userName}", Name = "GetBasketByUserName")]
@@ -57,6 +65,26 @@ namespace Basket.API.Controllers
         {
             var command = new DeleteBasketByUserNameCommand(userName);
             return Ok(await _mediator.Send(command));
+        }
+
+        [Route("action")]
+        [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.Accepted)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<ActionResult> Checkout([FromBody] BasketCheckout basketCheckout)
+        {
+            var query = new GetBasketByUserNameQuery(basketCheckout.UserName);
+            var basket = await _mediator.Send(query);
+            if (basket != null)
+            {
+                return BadRequest();
+            }
+            var eventMsg = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
+            eventMsg.TotaPrice = basket.TotalPrice;
+            await _publishEndpoint.Publish(eventMsg);
+            var deletedcmd = new DeleteBasketByUserNameCommand(basketCheckout.UserName);
+            await _mediator.Send(deletedcmd);
+            return Accepted();
         }
     }
 }

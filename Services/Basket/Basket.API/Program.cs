@@ -4,6 +4,8 @@ using Basket.Application.Mappers;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
 using Discount.Grpc.Protos;
+using MassTransit;
+using MassTransit.MultiBus;
 using Microsoft.OpenApi.Models;
 
 namespace Basket.API
@@ -30,6 +32,17 @@ namespace Basket.API
             builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
                 cfg=>cfg.Address=new Uri(builder.Configuration["GrpcSettings:DiscountUrl"])
                 );
+
+            //conf related to rabbit mq
+            builder.Services.AddMassTransit(config =>
+            {
+                config.UsingRabbitMq((ct, cfg) =>
+                {
+                    cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+                });
+
+            });
+            builder.Services.AddMassTransitHostedService();
 
             builder.Services.AddApiVersioning(options =>
             {
