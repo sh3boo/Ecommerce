@@ -67,17 +67,16 @@ namespace Basket.API.Controllers
             return Ok(await _mediator.Send(command));
         }
 
-        [Route("action")]
-        [HttpPost]
+        [HttpPost("Checkout")]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<ActionResult> Checkout([FromBody] BasketCheckout basketCheckout)
         {
             var query = new GetBasketByUserNameQuery(basketCheckout.UserName);
             var basket = await _mediator.Send(query);
-            if (basket != null)
+            if (basket == null)
             {
-                return BadRequest();
+                return BadRequest($"Basket for user '{basketCheckout.UserName}' was not found.");
             }
             var eventMsg = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
             eventMsg.TotaPrice = basket.TotalPrice;

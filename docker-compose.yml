@@ -99,7 +99,7 @@ services:
     - ASPNETCORE_URLS=http://+:8001
     - CacheSettings__ConnectionString=basketdb:6379
     - "GrpcSettings__DiscountUrl=http://discount.api:8080"
-    - "EventBusSettings__HostAddress=amqp://guest:guest@localhost:5672"
+    - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
   portainer:
    image: portainer/portainer-ce
    container_name: portainer
@@ -134,7 +134,7 @@ services:
      - ASPNETCORE_ENVIRONMENT=Development
      - ASPNETCORE_URLS=http://+:8080
      - "ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=OrderingDb;User Id=sa;Password=Password123;TrustServerCertificate=True;"
-     - "EventBusSettings__HostAddress=amqp://guest:guest@localhost:5672"
+     - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - orderdb
       - "rabbitmq"
