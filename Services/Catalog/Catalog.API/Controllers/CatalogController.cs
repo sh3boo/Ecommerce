@@ -36,7 +36,7 @@ namespace Catalog.API.Controllers
         [Route("[action]/{ProductName}", Name = "GetProductsByProductName")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IList<ProductResponseDto>))]
         //[ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<ActionResult<ProductResponseDto>> GetProductsByProductName(string ProductName)
+        public async Task<ActionResult<IList<ProductResponseDto>>> GetProductsByProductName(string ProductName)
         {
             var query = new GetProductsByNameQuery(ProductName);
             var result = await _mediator.Send(query);
@@ -116,4 +116,3 @@ namespace Catalog.API.Controllers
         }
     }
 }
- 
