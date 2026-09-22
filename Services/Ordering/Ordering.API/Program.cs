@@ -1,4 +1,5 @@
 
+using Common.Logging;
 using EventBus.Messages.Common;
 using MassTransit;
 using Ordering.API.EventBusConsumer;
@@ -6,6 +7,7 @@ using Ordering.API.Extensions;
 using Ordering.Application.Extensions;
 using Ordering.Infrastructure.Data;
 using Ordering.Infrastructure.Extensions;
+using Serilog;
 
 namespace Ordering.API
 {
@@ -16,6 +18,7 @@ namespace Ordering.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Host.UseSerilog(Logging.ConfigreLogger);
 
             builder.Services.AddApiVersioning(options =>
             {

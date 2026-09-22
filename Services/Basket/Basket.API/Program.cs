@@ -3,10 +3,12 @@ using Basket.Application.Handlers.Commands;
 using Basket.Application.Mappers;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
+using Common.Logging;
 using Discount.Grpc.Protos;
 using MassTransit;
 using MassTransit.MultiBus;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace Basket.API
 {
@@ -17,8 +19,11 @@ namespace Basket.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllers();
+            builder.Host.UseSerilog(Logging.ConfigreLogger);
 
+
+            builder.Services.AddControllers();
+             
             builder.Services.AddAutoMapper(cfg =>
                 cfg.AddMaps(typeof(BasketMappingProfile).Assembly));
 

@@ -1,10 +1,12 @@
 
+using Common.Logging;
 using Discount.API.Services;
 using Discount.Application.Commands;
 using Discount.Application.Mapper;
 using Discount.Core.Repositories;
 using Discount.Infrastructure.Extensions;
 using Discount.Infrastructure.Repositories;
+using Serilog;
 
 namespace Discount.API
 {
@@ -15,6 +17,7 @@ namespace Discount.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Host.UseSerilog(Logging.ConfigreLogger);
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

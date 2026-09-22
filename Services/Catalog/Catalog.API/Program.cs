@@ -3,6 +3,8 @@ using Catalog.Application.Mappers;
 using Catalog.Core.Repositories;
 using Catalog.Infrastructure.Context;
 using Catalog.Infrastructure.Repositories;
+using Common.Logging;
+using Serilog;
 using System.Reflection;
 
 namespace Catalog.API
@@ -14,6 +16,7 @@ namespace Catalog.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Host.UseSerilog(Logging.ConfigreLogger);
 
             builder.Services.AddControllers();
             builder.Services.AddAutoMapper(typeof(ProductMappingProfile).Assembly);

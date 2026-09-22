@@ -1,6 +1,7 @@
 ﻿using Catalog.Application.Commands;
 using Catalog.Application.Queries;
 using Catalog.Application.Responses;
+using Catalog.Core.Entities;
 using Catalog.Core.Specs;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -13,9 +14,12 @@ namespace Catalog.API.Controllers
     public class CatalogController : BaseApiController
     {
         private readonly IMediator _mediator;
-        public CatalogController(IMediator mediator)
+        private readonly ILogger<CatalogController> _logger;
+
+        public CatalogController(IMediator mediator, ILogger<CatalogController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
 
         }
 
@@ -40,6 +44,7 @@ namespace Catalog.API.Controllers
         {
             var query = new GetProductsByNameQuery(ProductName);
             var result = await _mediator.Send(query);
+            _logger.LogInformation($"Product with {ProductName} is fitched succesfully h33");
             return Ok(result);
             //return Ok("This is Catalog API");
         }
