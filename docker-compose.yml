@@ -15,6 +15,8 @@ services:
     - DatabaseSettings__ProductsCollection=Products
     - DatabaseSettings__BrandsCollection=Brands
     - DatabaseSettings__TypesCollection=Types
+    - "ElasticConfiguration__Uri=http://elasticsearch:9200"
+
 
   catalogdb:
      image: mongo
@@ -100,6 +102,8 @@ services:
     - CacheSettings__ConnectionString=basketdb:6379
     - "GrpcSettings__DiscountUrl=http://discount.api:8080"
     - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
+    - "ElasticConfiguration__Uri=http://elasticsearch:9200"
+
   portainer:
    image: portainer/portainer-ce
    container_name: portainer
@@ -119,6 +123,8 @@ services:
     environment:
      - ASPNETCORE_ENVIRONMENT=Development
      - "DatabaseSettings__Connection=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=Password@1"
+     - "ElasticConfiguration__Uri=http://elasticsearch:9200"
+
     depends_on:
       discountdb:
         condition: service_healthy 
@@ -135,11 +141,38 @@ services:
      - ASPNETCORE_URLS=http://+:8080
      - "ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=OrderingDb;User Id=sa;Password=Password123;TrustServerCertificate=True;"
      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
+     - "ElasticConfiguration__Uri=http://elasticsearch:9200"
+
     depends_on:
       - orderdb
       - "rabbitmq"
     ports:
       - "8003:8080"
+
+   
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.5.4
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "127.0.0.1:9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+  
+  kibana:
+    image: docker.elastic.co/kibana/kibana:9.5.4
+    container_name: kibana
+    depends_on:
+      - elasticsearch
+    environment:
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+    ports:
+      - "127.0.0.1:5601:5601"
+
+
 
 volumes:
   catalogdata:
@@ -148,4 +181,5 @@ volumes:
   postgres_date:
   pgadmin_data:
   orderdb-data:
+  elasticsearch_data:
 
