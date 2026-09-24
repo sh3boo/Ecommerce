@@ -16,6 +16,7 @@ namespace Basket.Application.Mappers
         {
             CreateMap<ShoppingCart,ShoppingCartResponse>().ReverseMap();
             CreateMap<ShoppingCartItem, ShoppingCartIemResponse>().ReverseMap();
+            CreateMap<BasketCheckoutV2, BasketCheckoutEventV2>().ReverseMap();
             CreateMap<BasketCheckout, BasketCheckoutEvent>()
                 .ForMember(destination => destination.TotaPrice,
                     options => options.MapFrom(source => source.TotalPrice))

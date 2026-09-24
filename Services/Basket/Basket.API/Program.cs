@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using Basket.Application.GrpcServices;
 using Basket.Application.Handlers.Commands;
 using Basket.Application.Mappers;
@@ -9,6 +10,7 @@ using MassTransit;
 using MassTransit.MultiBus;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Basket.API
 {
@@ -54,6 +56,10 @@ namespace Basket.API
                 options.ReportApiVersions = true;
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
+            }).AddApiExplorer(options=>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
             });
 
             builder.Services.AddEndpointsApiExplorer();
@@ -70,6 +76,27 @@ namespace Basket.API
                         Name = "Ahmed Shaban",
                         Email = "ahmedshaban2021@gmail.com"
                     }
+                });
+                options.SwaggerDoc("v2", new OpenApiInfo
+                {
+                    Title = "Basket.API",
+                    Version = "v2",
+                    Description = "Basket Microservice API V2",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Ahmed Shaban",
+                        Email = "ahmedshaban2021@gmail.com"
+                    }
+                });
+                options.DocInclusionPredicate((version, apiDescription) =>
+                {
+                    if (!apiDescription.TryGetMethodInfo(out var methodInfo))
+                    {
+                        return false;
+                    }
+                    var versions = methodInfo.DeclaringType?
+                                              .GetCustomAttributes(true).OfType<ApiVersionAttribute>().SelectMany(v => v.Versions);
+                    return versions?.Any(v => $"v{v.ToString()}" == version) ?? false;
                 });
             });
 
