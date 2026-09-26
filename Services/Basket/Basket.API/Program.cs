@@ -115,6 +115,7 @@ namespace Basket.API
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket.API v1");
+                options.SwaggerEndpoint("/swagger/v2/swagger.json", "Basket.API v2");
                 options.RoutePrefix = "swagger";
             });
 

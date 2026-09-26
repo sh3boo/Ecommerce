@@ -49,18 +49,26 @@ namespace Ordering.API
             builder.Services.AddApplicationServices();
             builder.Services.AddInfraService(builder.Configuration);
             builder.Services.AddScoped<BasketOrderingConsumer>();
+            builder.Services.AddScoped < BasketOrderingConsumerV2>();
 
             //conf related to rabbit mq
             builder.Services.AddMassTransit(config =>
             {
                 // mark consumer
                 config.AddConsumer<BasketOrderingConsumer>();
+                config.AddConsumer<BasketOrderingConsumerV2>();
                 config.UsingRabbitMq((ct, cfg) =>
                 {
                     cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
                     cfg.ReceiveEndpoint(EventBusConstant.BasketCheckoutQueue, c =>
                     {
                         c.ConfigureConsumer<BasketOrderingConsumer>(ct);
+                    });
+
+                    // for v2
+                    cfg.ReceiveEndpoint(EventBusConstant.BasketCheckoutQueueV2, c =>
+                    {
+                        c.ConfigureConsumer<BasketOrderingConsumerV2>(ct);
                     });
                 });
 
