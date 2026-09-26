@@ -1,4 +1,4 @@
-
+using Asp.Versioning;
 using Common.Logging;
 using EventBus.Messages.Common;
 using MassTransit;
@@ -24,7 +24,11 @@ namespace Ordering.API
             {
                 options.ReportApiVersions = true;
                 options.AssumeDefaultVersionWhenUnspecified = true;
-                options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+            }).AddApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
             });
 
 
@@ -34,13 +38,13 @@ namespace Ordering.API
             {
                 options.SwaggerDoc("v1", new Microsoft.OpenApi.OpenApiInfo
                 {
-                    Title = "Catalog.API",
+                    Title = "Ordering.API",
                     Version = "v1",
-                    Description = "Catalog Microservice API",
+                    Description = "Ordering Microservice API",
                     Contact = new Microsoft.OpenApi.OpenApiContact
                     {
-                        Name = "Ahemd Shaban",
-                        Email = "ahmedshanan2021@gmail.com"
+                        Name = "Ahmed Shaban",
+                        Email = "ahmedshaban2021@gmail.com"
                     }
                 }
                     );
@@ -89,7 +93,10 @@ namespace Ordering.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(options =>
+                {
+                    options.DisplayOperationId();
+                });
 
             }
 

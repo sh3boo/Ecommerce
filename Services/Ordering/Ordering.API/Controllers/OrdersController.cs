@@ -8,8 +8,6 @@ using Ordering.Core.Repositories;
 
 namespace Ordering.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class OrdersController : BaseApiController
     {
         private readonly ILogger<OrdersController> _logger;
@@ -22,7 +20,7 @@ namespace Ordering.API.Controllers
         }
 
         [HttpGet("{userName}", Name = "GetOrdersByUserName")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(OrderResponse))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<OrderResponse>))]
         public async Task<ActionResult<IEnumerable<OrderResponse>>> GetOrdersByUserName(string userName)
         {
             var query = new GetOrderListQuery(userName);
@@ -56,4 +54,3 @@ namespace Ordering.API.Controllers
 
     }
 }
-     
