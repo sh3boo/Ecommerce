@@ -14,13 +14,15 @@ public static class Config
     public static IEnumerable<ApiScope> ApiScopes =>
         new ApiScope[]
         {
-            new ApiScope("scope1"),
-            new ApiScope("scope2"),
+            new ApiScope("Catalogapi")
         };
     public static IEnumerable<ApiResource> ApiResource =>
         new ApiResource[]
         {
-            //new ApiScope("scope1"),
+            new ApiResource("Catalog","Catalogapi.Api")
+            {
+                Scopes = { "Catalogapi" }
+            }
             //new ApiScope("scope2"),
         };
 
@@ -53,6 +55,23 @@ public static class Config
 
                 AllowOfflineAccess = true,
                 AllowedScopes = { "openid", "profile", "scope2" }
+            },
+
+            // interactive client using code flow + pkce
+            new Client
+            {
+                ClientName = "Catalog API Client",
+                ClientId = "CatalogAPIClient",
+                ClientSecrets = { new Secret("49C1A7E1-0C99-4V89-A5D6-A37998FB86B0".Sha256()) },
+                    
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                //RedirectUris = { "https://localhost:44300/signin-oidc" },
+                //FrontChannelLogoutUri = "https://localhost:44300/signout-oidc",
+                //PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
+
+                //AllowOfflineAccess = true,
+                AllowedScopes = { "Catalogapi" }
             },
         };
 }
