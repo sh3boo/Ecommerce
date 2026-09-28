@@ -8,6 +8,8 @@ services:
     - "8000:8000"
     depends_on:
     - "catalogdb"
+    extra_hosts:
+     - "host.docker..internal:host-gateway"
     environment:
     - ASPNETCORE_URLS=http://+:8000
     - DatabaseSettings__ConnectionString=mongodb://CatalogDb:27017
@@ -16,7 +18,9 @@ services:
     - DatabaseSettings__BrandsCollection=Brands
     - DatabaseSettings__TypesCollection=Types
     - "ElasticConfiguration__Uri=http://elasticsearch:9200"
-
+    - "Auth__Authority=https://host.docker.internal:9009"
+    - "Auth__RequireHttpsMetadata=false"
+    - "Auth__Audience=Catalog"
 
   catalogdb:
      image: mongo
