@@ -26,7 +26,7 @@ public static class Config
             },
             new ApiResource("Basket","Basketapi.Api")
             {
-                Scopes = { "Basketapi" }
+                Scopes = { "basketapi" }
             },
             //new ApiScope("scope2"),
         };
