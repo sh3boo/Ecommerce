@@ -16,13 +16,15 @@ public static class Config
         {
             new ApiScope("Catalogapi"),
             new ApiScope("basketapi")
+            new ApiScope("Catalogapi.read"),
+            new ApiScope("Catalogapi.write"),
         };
     public static IEnumerable<ApiResource> ApiResource =>
         new ApiResource[]
         {
             new ApiResource("Catalog","Catalogapi.Api")
             {
-                Scopes = { "Catalogapi" }
+                Scopes = { "Catalogapi.read", "Catalogapi.write" }
             },
             new ApiResource("Basket","Basketapi.Api")
             {
@@ -76,7 +78,22 @@ public static class Config
                 //PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
 
                 //AllowOfflineAccess = true,
-                AllowedScopes = { "Catalogapi" , "basketapi" }
+                AllowedScopes = { "Catalogapi.read", "Catalogapi.write" }
+            },
+            new Client
+            {
+                ClientName = "Basket API Client",
+                ClientId = "BasketAPIClient",
+                ClientSecrets = { new Secret("49C1A7E1-0C99-4V89-A5S9-A37998FB86B0".Sha256()) },
+                    
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                //RedirectUris = { "https://localhost:44300/signin-oidc" },
+                //FrontChannelLogoutUri = "https://localhost:44300/signout-oidc",
+                //PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
+
+                //AllowOfflineAccess = true,
+                AllowedScopes = {  "basketapi" }
             },
         };
 }
