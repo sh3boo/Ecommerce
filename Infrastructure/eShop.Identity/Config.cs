@@ -14,7 +14,8 @@ public static class Config
     public static IEnumerable<ApiScope> ApiScopes =>
         new ApiScope[]
         {
-            new ApiScope("Catalogapi")
+            new ApiScope("Catalogapi"),
+            new ApiScope("basketapi")
         };
     public static IEnumerable<ApiResource> ApiResource =>
         new ApiResource[]
@@ -22,7 +23,11 @@ public static class Config
             new ApiResource("Catalog","Catalogapi.Api")
             {
                 Scopes = { "Catalogapi" }
-            }
+            },
+            new ApiResource("Basket","Basketapi.Api")
+            {
+                Scopes = { "Basketapi" }
+            },
             //new ApiScope("scope2"),
         };
 
@@ -71,7 +76,7 @@ public static class Config
                 //PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
 
                 //AllowOfflineAccess = true,
-                AllowedScopes = { "Catalogapi" }
+                AllowedScopes = { "Catalogapi" , "basketapi" }
             },
         };
 }

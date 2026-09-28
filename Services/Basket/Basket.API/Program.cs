@@ -8,6 +8,9 @@ using Common.Logging;
 using Discount.Grpc.Protos;
 using MassTransit;
 using MassTransit.MultiBus;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -25,7 +28,42 @@ namespace Basket.API
 
 
             builder.Services.AddControllers();
-             
+
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+              .AddJwtBearer(options =>
+              {
+                  options.Authority = "https://host.docker.internal:9009";
+                  options.RequireHttpsMetadata = true;
+                  options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                  {
+                      ValidateIssuer = true,
+                      ValidIssuer = "https://localhost:9009",
+                      ValidateAudience = true,
+                      ValidAudience = "Basket",
+                      ValidateLifetime = true,
+                      ValidateIssuerSigningKey = true,
+                      ClockSkew = TimeSpan.Zero
+                  };
+                  // add this to docker to host communication
+                  options.BackchannelHttpHandler = new HttpClientHandler
+                  {
+                      ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+                  };
+                  options.Events = new JwtBearerEvents
+                  {
+                      OnAuthenticationFailed = context =>
+                      {
+                          Console.WriteLine("=====  Authintcation failed");
+                          Console.WriteLine($"Exception {context.Exception.Message}");
+                          Console.WriteLine($"Authurity {options.Authority}");
+                          return Task.CompletedTask;
+                      }
+                  };
+              });
+
+
+
             builder.Services.AddAutoMapper(cfg =>
                 cfg.AddMaps(typeof(BasketMappingProfile).Assembly));
 
@@ -39,6 +77,13 @@ namespace Basket.API
             builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
                 cfg=>cfg.Address=new Uri(builder.Configuration["GrpcSettings:DiscountUrl"])
                 );
+
+            var userPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            builder.Services.AddControllers(confg =>
+            {
+                confg.Filters.Add(new AuthorizeFilter(userPolicy));
+            });
+
 
             //conf related to rabbit mq
             builder.Services.AddMassTransit(config =>
@@ -119,6 +164,7 @@ namespace Basket.API
                 options.RoutePrefix = "swagger";
             });
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();
