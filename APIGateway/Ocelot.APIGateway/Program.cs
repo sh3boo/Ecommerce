@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -10,6 +11,40 @@ builder.Services.AddControllers();
 
 builder.Configuration.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
 builder.Services.AddOcelot(builder.Configuration);
+var authSchema = "EshoppingGatewayAuthSchema";
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(authSchema,options =>
+    {
+        options.Authority = "https://host.docker.internal:9009";
+        options.Audience = "EshoppingGateway";
+        options.RequireHttpsMetadata = true;
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = "https://localhost:9009",
+            ValidateAudience = true,
+            ValidAudience = "EshoppingGateway",
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ClockSkew = TimeSpan.Zero
+        };
+        // add this to docker to host communication
+        options.BackchannelHttpHandler = new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+        };
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                Console.WriteLine("=====  Authintcation failed");
+                Console.WriteLine($"Exception {context.Exception.Message}");
+                Console.WriteLine($"Authurity {options.Authority}");
+                return Task.CompletedTask;
+            }
+        };
+    });
 
 
 builder.Services.AddOpenApi();

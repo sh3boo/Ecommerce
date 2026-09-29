@@ -55,6 +55,10 @@ namespace Catalog.API
                     };
                 });
 
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("CanRead", policy => policy.RequireClaim("scope", "Catalogapi.read"));
+            });
 
             builder.Services.AddAutoMapper(typeof(ProductMappingProfile).Assembly);
             //builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(

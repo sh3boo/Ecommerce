@@ -15,9 +15,10 @@ public static class Config
         new ApiScope[]
         {
             new ApiScope("Catalogapi"),
-            new ApiScope("basketapi")
+            new ApiScope("basketapi"),
             new ApiScope("Catalogapi.read"),
             new ApiScope("Catalogapi.write"),
+            new ApiScope("eshoppinggateway")
         };
     public static IEnumerable<ApiResource> ApiResource =>
         new ApiResource[]
@@ -29,6 +30,10 @@ public static class Config
             new ApiResource("Basket","Basketapi.Api")
             {
                 Scopes = { "basketapi" }
+            },
+            new ApiResource("EshoppingGateway","Eshopping Gateway")
+            {
+                Scopes = { "eshoppinggateway", "basketapi" }
             },
             //new ApiScope("scope2"),
         };
@@ -85,15 +90,16 @@ public static class Config
                 ClientName = "Basket API Client",
                 ClientId = "BasketAPIClient",
                 ClientSecrets = { new Secret("49C1A7E1-0C99-4V89-A5S9-A37998FB86B0".Sha256()) },
-                    
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-
-                //RedirectUris = { "https://localhost:44300/signin-oidc" },
-                //FrontChannelLogoutUri = "https://localhost:44300/signout-oidc",
-                //PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
-
-                //AllowOfflineAccess = true,
                 AllowedScopes = {  "basketapi" }
+            },
+            new Client
+            {
+                ClientName = "Eshopping Gateway Client",
+                ClientId = "EshoppingGatewayClient",
+                ClientSecrets = { new Secret("49C1A7E1-0C99-4V89-A5S9-A34998FV86B0".Sha256()) },
+                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                AllowedScopes = { "eshoppinggateway", "basketapi" }
             },
         };
 }
