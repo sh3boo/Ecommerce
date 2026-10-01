@@ -1,6 +1,6 @@
 FROM nginx
 
-COPY APIGeteway/nginx.local.conf /etc/nginx/nginx.conf
+COPY APIGateway/nginx/nginx.local.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 
