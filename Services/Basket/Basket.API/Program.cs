@@ -33,12 +33,14 @@ namespace Basket.API
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
               .AddJwtBearer(options =>
               {
-                  options.Authority = "https://host.docker.internal:9009";
-                  options.RequireHttpsMetadata = true;
+                  //options.Authority = "http://identityserver:9011";
+                  options.Authority = "https://id-local.eshopping.com:44344";
+                  options.RequireHttpsMetadata = false;
                   options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                   {
                       ValidateIssuer = true,
-                      ValidIssuer = "https://localhost:9009",
+                      //ValidIssuer = "https://id-local.eshopping.com:44344",
+                      ValidIssuer = "https://id-local.eshopping.com:44344",
                       ValidateAudience = true,
                       ValidAudience = "Basket",
                       ValidateLifetime = true,
@@ -152,17 +154,56 @@ namespace Basket.API
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            app.UseDeveloperExceptionPage();
-
-            app.UseSwagger();
-
-            app.UseSwaggerUI(options =>
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket.API v1");
-                options.SwaggerEndpoint("/swagger/v2/swagger.json", "Basket.API v2");
-                options.RoutePrefix = "swagger";
+                ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor |
+                                   Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto |
+                                   Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedHost
             });
+
+            if (app.Environment.IsDevelopment())
+            {
+                // BEFORE UseSwagger / routing
+                app.Use((ctx, next) =>
+                {
+                    if (ctx.Request.Headers.TryGetValue("X-Forwarded-Prefix", out var p) && !string.IsNullOrEmpty(p))
+                        ctx.Request.PathBase = p.ToString();   // e.g., "/catalog"
+                    return next();
+                });
+
+                app.UseSwagger(c =>
+                {
+                    // Make the OpenAPI "servers" base path match the prefix so Try it out uses /catalog/...
+                    c.PreSerializeFilters.Add((doc, req) =>
+                    {
+                        var prefix = req.Headers["X-Forwarded-Prefix"].FirstOrDefault();
+                        if (!string.IsNullOrEmpty(prefix))
+                            doc.Servers = new List<Microsoft.OpenApi.Models.OpenApiServer>
+            { new() { Url = prefix } };
+                    });
+                });
+
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("v1/swagger.json", "Basket.API v1"); // relative path (no leading '/')
+                    c.RoutePrefix = "swagger";
+                });
+
+
+                // Configure the HTTP request pipeline.
+                app.UseDeveloperExceptionPage();
+
+            }
+
+
+            //app.UseSwagger();
+
+            //app.UseSwaggerUI(options =>
+            //{
+            //    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket.API v1");
+            //    options.SwaggerEndpoint("/swagger/v2/swagger.json", "Basket.API v2");
+            //    options.RoutePrefix = "swagger";
+            //});
 
             app.UseAuthentication();
             app.UseAuthorization();

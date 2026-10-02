@@ -16,13 +16,13 @@ var authSchema = "EshoppingGatewayAuthSchema";
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(authSchema,options =>
     {
-        options.Authority = "https://host.docker.internal:9009";
+        options.Authority = "http://identityserver:9011";
         options.Audience = "EshoppingGateway";
-        options.RequireHttpsMetadata = true;
+        options.RequireHttpsMetadata = false;
         options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
         {
             ValidateIssuer = true,
-            ValidIssuer = "https://localhost:9009",
+            ValidIssuer = "http://identityserver:9011",
             ValidateAudience = true,
             ValidAudience = "EshoppingGateway",
             ValidateLifetime = true,

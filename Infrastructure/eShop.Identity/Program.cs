@@ -17,9 +17,7 @@ try
         .Enrich.FromLogContext()
         .ReadFrom.Configuration(ctx.Configuration));
 
-    var app = builder
-        .ConfigureServices()
-        .ConfigurePipeline();
+    var app = builder.ConfigureServices();
 
     var forwardedHeadersOptions = new ForwardedHeadersOptions
     {
@@ -29,6 +27,7 @@ try
     forwardedHeadersOptions.KnownProxies.Clear();
     app.UseForwardedHeaders(forwardedHeadersOptions);
 
+    app.ConfigurePipeline();
 
     app.Run();
 }

@@ -7,6 +7,7 @@ using Common.Logging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.OpenApi;
 using Serilog;
 using System.Reflection;
 
@@ -26,12 +27,12 @@ namespace Catalog.API
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    options.Authority = "https://host.docker.internal:9009";
-                    options.RequireHttpsMetadata = true;
+                    options.Authority = "http://identityserver:9011";
+                    options.RequireHttpsMetadata = false;
                     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                     {
                         ValidateIssuer = true,
-                        ValidIssuer = "https://localhost:9009",
+                        ValidIssuer = "https://id-local.eshopping.com:44344",
                         ValidateAudience = true,
                         ValidAudience= "Catalog",
                         ValidateLifetime = true,
@@ -105,6 +106,21 @@ namespace Catalog.API
                     }
                 }
                     );
+
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "Enter the JWT access token only. Swagger adds the Bearer prefix automatically.",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
+                });
+
+                options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
+                {
+                    [new OpenApiSecuritySchemeReference("Bearer", document)] = new List<string>()
+                });
             });
 
 
@@ -112,9 +128,33 @@ namespace Catalog.API
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
-            { 
-                app.UseSwagger();
-                app.UseSwaggerUI();
+            {
+                // BEFORE UseSwagger / routing
+                app.Use((ctx, next) =>
+                {
+                    if (ctx.Request.Headers.TryGetValue("X-Forwarded-Prefix", out var p) && !string.IsNullOrEmpty(p))
+                        ctx.Request.PathBase = p.ToString();   // e.g., "/catalog"
+                    return next();
+                });
+
+                app.UseSwagger(c =>
+                {
+                    // Make the OpenAPI "servers" base path match the prefix so Try it out uses /catalog/...
+                    c.PreSerializeFilters.Add((doc, req) =>
+                    {
+                        var prefix = req.Headers["X-Forwarded-Prefix"].FirstOrDefault();
+                        if (!string.IsNullOrEmpty(prefix))
+                            doc.Servers = new List<OpenApiServer>
+            { new() { Url = prefix } };
+                    });
+                });
+
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("v1/swagger.json", "Catalog.API v1"); // relative path (no leading '/')
+                    c.RoutePrefix = "swagger";
+                });
+
             }
 
             app.UseAuthentication();
